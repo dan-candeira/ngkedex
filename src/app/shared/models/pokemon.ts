@@ -5,11 +5,11 @@ import {PokemonStats} from './pokemon-stats';
 import {PokemonDescription} from './pokemon-description';
 
 export class Pokemon {
-  baseInfo: PokemonEntry;
-  abilityInfo: PokemonAbilityInfo;
-  descriptions: PokemonDescription[];
-  types: PokemonType[];
-  stats: PokemonStats;
+  baseInfo?: PokemonEntry;
+  abilityInfo?: PokemonAbilityInfo;
+  descriptions?: PokemonDescription[];
+  types?: PokemonType[];
+  stats?: PokemonStats;
 
 
   constructor(baseInfo: PokemonEntry, abilityInfo: PokemonAbilityInfo, descriptions: PokemonDescription[], types: PokemonType[], stats: PokemonStats) {

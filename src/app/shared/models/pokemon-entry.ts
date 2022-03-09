@@ -1,7 +1,7 @@
 export class PokemonEntry {
-  id: number;
-  name: string;
-  sprite: string;
+  id?: number;
+  name?: string;
+  sprite?: string;
 
 
   constructor(id: number, name: string, sprite: string) {

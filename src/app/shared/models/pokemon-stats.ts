@@ -1,10 +1,10 @@
 export class PokemonStats {
-  hp: number;
-  attack: number;
-  defense: number;
-  specialAttack: number;
-  specialDefense: number;
-  speed: number;
+  hp?: number;
+  attack?: number;
+  defense?: number;
+  specialAttack?: number;
+  specialDefense?: number;
+  speed?: number;
 
 
   constructor(hp: number, attack: number, defense: number, specialAttack: number, specialDefense: number, speed: number) {

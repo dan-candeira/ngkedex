@@ -1,6 +1,6 @@
 export class PokemonDescription {
-  description: string;
-  version: string;
+  description?: string;
+  version?: string;
 
 
   constructor(description: string, version: string) {

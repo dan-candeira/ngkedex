@@ -1,5 +1,5 @@
 import {Component, OnInit, OnChanges, Input, Output, EventEmitter} from '@angular/core';
-import {Observable} from 'rxjs';
+import {filter, map, Observable, range, toArray} from 'rxjs';
 
 @Component({
   selector: 'app-pagination',
@@ -16,8 +16,6 @@ export class PaginationComponent implements OnInit, OnChanges {
   currentPage: number;
   totalPages: number;
 
-  constructor() { }
-
   ngOnInit() {
     this.getPages(this.offset, this.limit, this.size);
   }
@@ -29,10 +27,12 @@ export class PaginationComponent implements OnInit, OnChanges {
   getPages(offset: number, limit: number, size: number) {
     this.currentPage = this.getCurrentPage(offset, limit);
     this.totalPages = this.getTotalPages(limit, size);
-    this.pages = Observable.range(-this.range, this.range * 2 + 1)
-      .map(offset => this.currentPage + offset)
-      .filter(page => this.isValidPageNumber(page, this.totalPages))
-      .toArray();
+    this.pages = range(-this.range, this.range * 2 + 1).pipe(
+
+      map(offset => this.currentPage + offset),
+      filter(page => this.isValidPageNumber(page, this.totalPages)),
+      toArray()
+    )
   }
 
   isValidPageNumber(page: number, totalPages: number): boolean {
@@ -47,14 +47,14 @@ export class PaginationComponent implements OnInit, OnChanges {
     return Math.ceil(Math.max(size, 1) / Math.max(limit, 1));
   }
 
-  selectPage(page: number, event) {
+  selectPage(page: number, event: any) {
     this.cancelEvent(event);
     if (this.isValidPageNumber(page, this.totalPages)) {
       this.pageChange.emit((page - 1) * this.limit);
     }
   }
 
-  cancelEvent(event) {
+  cancelEvent(event: any) {
     event.preventDefault();
   }
 }

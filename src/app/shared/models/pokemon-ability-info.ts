@@ -1,10 +1,10 @@
 import {PokemonAbility} from './pokemon-ability';
 
 export class PokemonAbilityInfo {
-  height: number;
-  weight: number;
-  abilities: PokemonAbility[];
-  category: string;
+  height?: number;
+  weight?: number;
+  abilities?: PokemonAbility[];
+  category?: string;
 
 
   constructor(height: number, weight: number, abilities: PokemonAbility[], category: string) {
