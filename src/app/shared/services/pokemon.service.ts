@@ -44,19 +44,19 @@ export class PokemonService {
         (data: any) =>
           new Pokemon(
             new PokemonEntry(
-              data[0].id,
-              _.capitalize(data[0].name),
-              `${this._spriteBaseUrl}/${data[0].id}.png`
+              data?.pokemon.id,
+              _.capitalize(data?.pokemon.name),
+              `${this._spriteBaseUrl}/${data?.pokemon.id}.png`
             ),
             new PokemonAbilityInfo(
-              data[0].height,
-              data[0].weight,
-              this.getAbilities(data[0].abilities),
-              this.getCategory(data[1].genera)
+              data?.pokemon.height,
+              data?.pokemon.weight,
+              this.getAbilities(data?.pokemon.abilities),
+              this.getCategory(data?.species?.genera)
             ),
-            this.getDescriptions(data[1]['flavor_text_entries']),
-            this.getTypes(data[0].types),
-            this.getStats(data[0].stats)
+            this.getDescriptions(data?.species?.['flavor_text_entries']),
+            this.getTypes(data?.pokemon.types),
+            this.getStats(data?.pokemon.stats)
           )
       )
     );
@@ -80,7 +80,7 @@ export class PokemonService {
 
   getAbilities(abilities: any[]): PokemonAbility[] {
     return abilities
-      .map(
+      ?.map(
         (ability) =>
           new PokemonAbility(
             _.startCase(ability.ability.name),
@@ -92,13 +92,13 @@ export class PokemonService {
   }
 
   getCategory(genera: any[]): string {
-    return genera.find((genera) => genera.language.name === this._language)
+    return genera?.find((genera) => genera.language.name === this._language)
       .genus;
   }
 
   getDescriptions(entries: any[]): PokemonDescription[] {
     return entries
-      .filter((entry) => entry.language.name === this._language)
+      ?.filter((entry) => entry.language.name === this._language)
       .map(
         (entry) =>
           new PokemonDescription(
@@ -110,18 +110,18 @@ export class PokemonService {
 
   getTypes(types: any[]): PokemonType[] {
     return types
-      .map((type) => new PokemonType(type.type.name, type.slot))
+      ?.map((type) => new PokemonType(type.type.name, type.slot))
       .sort((type1, type2) => type1.order - type2.order);
   }
 
   getStats(stats: any[]): PokemonStats {
     return new PokemonStats(
-      stats.find((stat) => stat.stat.name === 'hp')['base_stat'],
-      stats.find((stat) => stat.stat.name === 'attack')['base_stat'],
-      stats.find((stat) => stat.stat.name === 'defense')['base_stat'],
-      stats.find((stat) => stat.stat.name === 'special-attack')['base_stat'],
-      stats.find((stat) => stat.stat.name === 'special-defense')['base_stat'],
-      stats.find((stat) => stat.stat.name === 'speed')['base_stat']
+      stats?.find((stat) => stat.stat.name === 'hp')['base_stat'],
+      stats?.find((stat) => stat.stat.name === 'attack')['base_stat'],
+      stats?.find((stat) => stat.stat.name === 'defense')['base_stat'],
+      stats?.find((stat) => stat.stat.name === 'special-attack')['base_stat'],
+      stats?.find((stat) => stat.stat.name === 'special-defense')['base_stat'],
+      stats?.find((stat) => stat.stat.name === 'speed')['base_stat']
     );
   }
 }
