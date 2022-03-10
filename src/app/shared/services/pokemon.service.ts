@@ -1,23 +1,29 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { forkJoin, Observable } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
 import { PokemonList } from '../models/pokemon-list';
 import { PokemonEntry } from '../models/pokemon-entry';
-import * as _ from 'lodash';
 import { Pokemon } from '../models/pokemon';
 import { PokemonAbilityInfo } from '../models/pokemon-ability-info';
 import { PokemonAbility } from '../models/pokemon-ability';
 import { PokemonDescription } from '../models/pokemon-description';
 import { PokemonStats } from '../models/pokemon-stats';
 import { PokemonType } from '../models/pokemon-type';
-import { HttpClient } from '@angular/common/http';
+
+import { capitalize, startCase, replace } from 'lodash';
 
 @Injectable()
 export class PokemonService {
   private _baseUrl: string = 'https://pokeapi.co/api/v2';
+
   private _spriteBaseUrl: string =
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork';
+
   private _detailRegex = /^https:\/\/pokeapi.co\/api\/v2\/pokemon\/(\d+)\/$/;
+
   private _language = 'en';
 
   constructor(private _http: HttpClient) {}
@@ -45,7 +51,7 @@ export class PokemonService {
           new Pokemon(
             new PokemonEntry(
               data?.pokemon.id,
-              _.capitalize(data?.pokemon.name),
+              capitalize(data?.pokemon.name),
               `${this._spriteBaseUrl}/${data?.pokemon.id}.png`
             ),
             new PokemonAbilityInfo(
@@ -75,7 +81,7 @@ export class PokemonService {
     const matches = this._detailRegex.exec(data.url),
       id: any = matches == null ? null : parseInt(matches[1]),
       sprite: any = id == null ? null : `${this._spriteBaseUrl}/${id}.png`;
-    return new PokemonEntry(id, _.capitalize(data.name), sprite);
+    return new PokemonEntry(id, capitalize(data.name), sprite);
   }
 
   getAbilities(abilities: any[]): PokemonAbility[] {
@@ -83,7 +89,7 @@ export class PokemonService {
       ?.map(
         (ability) =>
           new PokemonAbility(
-            _.startCase(ability.ability.name),
+            startCase(ability.ability.name),
             ability['is_hidden'],
             ability.slot
           )
@@ -103,7 +109,7 @@ export class PokemonService {
         (entry) =>
           new PokemonDescription(
             entry['flavor_text'],
-            _.startCase(_.replace(entry.version.name, '-', ' '))
+            startCase(replace(entry.version.name, '-', ' '))
           )
       );
   }

@@ -1,0 +1,10 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  li {
+    width: 1.2rem;
+  }
+}

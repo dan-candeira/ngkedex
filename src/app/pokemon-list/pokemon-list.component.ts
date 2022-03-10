@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PokemonService } from '@shared/services/pokemon.service';
 import { PokemonEntry } from '@shared/models/pokemon-entry';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,6 +8,12 @@ import { map, share } from 'rxjs/operators';
   providers: [PokemonService],
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
+  styles: [
+    /*css*/ `
+      @use 'pokemon-list';
+    `,
+  ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class PokemonListComponent implements OnInit {
   pokemons?: PokemonEntry[];
@@ -40,7 +46,6 @@ export class PokemonListComponent implements OnInit {
     this.failed = false;
     this._service.findAll(offset, limit).subscribe({
       next: (result) => {
-        console.log(result);
         this.pokemons = result.pokemons;
         this.count = result.count;
         this.loading = false;
