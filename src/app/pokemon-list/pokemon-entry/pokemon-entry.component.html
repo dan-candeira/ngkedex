@@ -1,18 +1,18 @@
 <article class="card__item">
-  <div class="card__image">
-    <img
-      [src]="pokemon?.sprite"
-      loading="lazy"
-      [width]="imageWidth"
-      [height]="imageHeight"
-      alt=""
-    />
-  </div>
-  <h2 class="card__title">{{ pokemon?.name }}</h2>
-  <div class="card__action" *ngIf="withLink">
-    <a [routerLink]="['/pokemon', pokemon?.id]"
-      >View stats
-      <span class="visually-hidden"> about {{ pokemon?.name }}</span>
-    </a>
-  </div>
+	<div class="card__image">
+		<img
+			[src]="pokemon?.sprite"
+			loading="lazy"
+			[width]="imageWidth"
+			[height]="imageHeight"
+			alt=""
+		/>
+	</div>
+	<h2 class="card__title">{{ pokemon?.name }}</h2>
+	<div class="card__action" *ngIf="withLink">
+		<a [routerLink]="['/pokemon', pokemon?.id]"
+			>View stats
+			<span class="visually-hidden"> about {{ pokemon?.name }}</span>
+		</a>
+	</div>
 </article>

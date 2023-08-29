@@ -24,29 +24,29 @@ import { FeetPipe } from './shared/metrics/feet.pipe';
 import { PoundPipe } from './shared/metrics/pound.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PokemonListComponent,
-    PokemonEntryComponent,
-    PaginationComponent,
-    PokemonInfoComponent,
-    NavbarComponent,
-    PokemonAbilityInfoComponent,
-    FeetPipe,
-    PoundPipe,
-    PokemonDescriptionComponent,
-    PokemonTypesComponent,
-    PokemonStatsComponent,
-    LoaderComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+	declarations: [
+		AppComponent,
+		PokemonListComponent,
+		PokemonEntryComponent,
+		PaginationComponent,
+		PokemonInfoComponent,
+		NavbarComponent,
+		PokemonAbilityInfoComponent,
+		FeetPipe,
+		PoundPipe,
+		PokemonDescriptionComponent,
+		PokemonTypesComponent,
+		PokemonStatsComponent,
+		LoaderComponent,
+	],
+	imports: [
+		BrowserModule,
+		FormsModule,
+		HttpClientModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+	],
+	providers: [],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}

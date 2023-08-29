@@ -6,21 +6,21 @@ vh can break on new iphones
 */
 
 section {
-  margin-block-end: 1.5rem;
+	margin-block-end: 1.5rem;
 
-  .card {
-    &__list {
-      --min: 35ch;
-      --gap: 1rem;
+	.card {
+		&__list {
+			--min: 35ch;
+			--gap: 1rem;
 
-      display: grid;
-      gap: var(--gap);
-      /* min() with 100% prevents overflow
+			display: grid;
+			gap: var(--gap);
+			/* min() with 100% prevents overflow
 in extra narrow spaces */
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(min(100%, var(--min)), 1fr)
-      );
-    }
-  }
+			grid-template-columns: repeat(
+				auto-fit,
+				minmax(min(100%, var(--min)), 1fr)
+			);
+		}
+	}
 }

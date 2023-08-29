@@ -1,4 +1,6 @@
 {
-    "singleQuote": true,
-    "endOfLine": "auto"
-  }
+	"singleQuote": true,
+	"endOfLine": "auto",
+	"tabWidth": 4,
+	"useTabs": true
+}
