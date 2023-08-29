@@ -33,7 +33,9 @@
 				<div class="progress">
 					<div
 						class="determinate"
-						[style.width]="getStatPercent(stats?.specialAttack)"
+						[style.width]="
+							getStatPercent(stats?.specialAttack)
+						"
 						[title]="stats?.specialAttack"
 					></div>
 				</div>
@@ -41,7 +43,9 @@
 				<div class="progress">
 					<div
 						class="determinate"
-						[style.width]="getStatPercent(stats?.specialDefense)"
+						[style.width]="
+							getStatPercent(stats?.specialDefense)
+						"
 						[title]="stats?.specialDefense"
 					></div>
 				</div>

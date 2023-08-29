@@ -1,5 +1,8 @@
 <ul class="pagination">
-	<li (click)="selectPage(1, $event)" [class.disabled]="currentPage == 1">
+	<li
+		(click)="selectPage(1, $event)"
+		[class.disabled]="currentPage == 1"
+	>
 		<a href="" title="Go to first page">&laquo;</a>
 	</li>
 	<li
@@ -15,7 +18,10 @@
 	>
 		<a href="">...</a>
 	</li>
-	<li *ngFor="let page of pages | async" [class.active]="page == currentPage">
+	<li
+		*ngFor="let page of pages | async"
+		[class.active]="page == currentPage"
+	>
 		<a href="" (click)="selectPage(page, $event)">
 			{{ page }}
 		</a>

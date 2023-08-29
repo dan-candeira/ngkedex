@@ -22,15 +22,21 @@ export class PokemonService {
 	private _spriteBaseUrl: string =
 		'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork';
 
-	private _detailRegex = /^https:\/\/pokeapi.co\/api\/v2\/pokemon\/(\d+)\/$/;
+	private _detailRegex =
+		/^https:\/\/pokeapi.co\/api\/v2\/pokemon\/(\d+)\/$/;
 
 	private _language = 'en';
 
 	constructor(private _http: HttpClient) {}
 
-	findAll(offset: number = 0, limit: number = 20): Observable<PokemonList> {
+	findAll(
+		offset: number = 0,
+		limit: number = 20,
+	): Observable<PokemonList> {
 		return this._http
-			.get(`${this._baseUrl}/pokemon/?offset=${offset}&limit=${limit}`)
+			.get(
+				`${this._baseUrl}/pokemon/?offset=${offset}&limit=${limit}`,
+			)
 			.pipe(
 				map((response) => response),
 				map((results) => this.getList(results)),
@@ -101,8 +107,9 @@ export class PokemonService {
 	}
 
 	getCategory(genera: any[]): string {
-		return genera?.find((genera) => genera.language.name === this._language)
-			.genus;
+		return genera?.find(
+			(genera) => genera.language.name === this._language,
+		).genus;
 	}
 
 	getDescriptions(entries: any[]): PokemonDescription[] {
@@ -126,8 +133,12 @@ export class PokemonService {
 	getStats(stats: any[]): PokemonStats {
 		return new PokemonStats(
 			stats?.find((stat) => stat.stat.name === 'hp')['base_stat'],
-			stats?.find((stat) => stat.stat.name === 'attack')['base_stat'],
-			stats?.find((stat) => stat.stat.name === 'defense')['base_stat'],
+			stats?.find((stat) => stat.stat.name === 'attack')[
+				'base_stat'
+			],
+			stats?.find((stat) => stat.stat.name === 'defense')[
+				'base_stat'
+			],
 			stats?.find((stat) => stat.stat.name === 'special-attack')[
 				'base_stat'
 			],

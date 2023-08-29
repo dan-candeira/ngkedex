@@ -14,7 +14,11 @@ export class PoundPipe implements PipeTransform {
 	};
 	private _poundPerGram: number = 0.00220462;
 
-	transform(value?: number, type?: string, decimals?: number): string | null {
+	transform(
+		value?: number,
+		type?: string,
+		decimals?: number,
+	): string | null {
 		if (value == null) {
 			return null;
 		}

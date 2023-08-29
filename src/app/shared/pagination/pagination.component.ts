@@ -17,7 +17,8 @@ export class PaginationComponent implements OnInit, OnChanges {
 	@Input() limit: number = 1;
 	@Input() size: number = 1;
 	@Input() range: number = 3;
-	@Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
+	@Output() pageChange: EventEmitter<number> =
+		new EventEmitter<number>();
 
 	pages: Observable<number[]>;
 	currentPage: number;
@@ -36,7 +37,9 @@ export class PaginationComponent implements OnInit, OnChanges {
 		this.totalPages = this.getTotalPages(limit, size);
 		this.pages = range(-this.range, this.range * 2 + 1).pipe(
 			map((offset) => this.currentPage + offset),
-			filter((page) => this.isValidPageNumber(page, this.totalPages)),
+			filter((page) =>
+				this.isValidPageNumber(page, this.totalPages),
+			),
 			toArray(),
 		);
 	}

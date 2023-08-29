@@ -17,7 +17,9 @@ export class FeetPipe implements PipeTransform {
 		let meters = this.getMeters(value, type),
 			feet = meters * this._feetPerMeter,
 			roundedFeet = Math.floor(feet),
-			inches = Math.round((feet - roundedFeet) * this._inchesPerFeet);
+			inches = Math.round(
+				(feet - roundedFeet) * this._inchesPerFeet,
+			);
 		return `${roundedFeet}' ${_.padStart(inches.toString(), 2, '0')}"`;
 	}
 

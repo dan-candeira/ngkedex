@@ -2,5 +2,6 @@
 	"singleQuote": true,
 	"endOfLine": "auto",
 	"tabWidth": 4,
-	"useTabs": true
+	"useTabs": true,
+	"printWidth": 75
 }
