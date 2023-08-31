@@ -7,7 +7,7 @@
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
-					"style": "scss"
+					"style": "css"
 				},
 				"@schematics/angular:application": {
 					"strict": true
@@ -28,8 +28,12 @@
 						"inlineStyleLanguage": "scss",
 						"assets": ["src/favicon.ico", "src/assets"],
 						"stylePreprocessorOptions": {
-							"includePaths": ["src/scss"]
+							"includePaths": ["src/styles"]
 						},
+						"allowedCommonJsDependencies": [
+							"lodash"
+						],
+						"styles": ["src/styles/global.css"],
 						"scripts": []
 					},
 					"configurations": {
@@ -108,7 +112,6 @@
 		}
 	},
 	"cli": {
-		"schematicCollections": ["@angular-eslint/schematics"],
 		"analytics": false
 	}
 }

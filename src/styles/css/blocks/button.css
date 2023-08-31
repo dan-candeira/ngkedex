@@ -1,0 +1,42 @@
+.button {
+	display: inline-block;
+	padding: 0.5rem 2rem;
+	background-color: var(--color-primary);
+	color: var(--color-light);
+	border: 2px solid;
+
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+
+	font-family: var(--font-base);
+	font-weight: var(--weight-bold);
+}
+
+.button:focus {
+	outline: 4px solid var(--color-dark);
+	outline-offset: 5px;
+}
+
+/* Make sure hover state trumps all variants with a good ol'  important */
+.button:not([data-variant="dark"]):hover,
+.button:not([data-variant="dark"]):focus {
+	background-color: var(--color-dark) !important;
+	color: var(--color-light) !important;
+}
+
+.button[data-variant="dark"]:hover {
+	background-color: var(--color-primary) !important;
+	color: var(--color-dark) !important;
+}
+
+/* Add a ghost modifier */
+.button[data-variant="ghost"] {
+	background-color: transparent;
+	color: currentColor;
+}
+
+.button[data-variant="dark"] {
+	background-color: var(--color-dark);
+	color: var(--color-light);
+}

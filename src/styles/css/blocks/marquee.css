@@ -1,0 +1,36 @@
+.marquee {
+	overflow: hidden;
+	display: inline-flex;
+	gap: var(--space-s-m);
+}
+
+.marquee .marquee__content > div {
+	display: flex;
+	gap: var(--gutter);
+	overflow: hidden;
+	padding-inline: var(--gutter);
+	max-inline-size: var(--wrapper-max-width, 85rem);
+	align-items: center;
+}
+
+
+.marquee .marquee__content {
+	display: flex;
+	flex-shrink: 0;
+	justify-content: space-around;
+	gap: var(--space-s-m);
+	animation: scroll 12s linear infinite;
+	animation-fill-mode: both;
+	animation-play-state: var(--animation-play-state);
+}
+
+@keyframes scroll {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(calc(-100% - var(--space-s-m)));
+	}
+}
+

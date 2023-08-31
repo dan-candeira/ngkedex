@@ -1,10 +1,19 @@
 <app-navbar title="Pokédex"></app-navbar>
 <main tab-index="-1" id="main">
-	<router-outlet></router-outlet>
+	<div class="wrapper">
+		<app-loader
+			*ngIf="loading$ | async as loading;"
+			[loading]="loading"
+			[failed]="failed$ | async"
+		></app-loader>
+		<router-outlet></router-outlet>
+	</div>
 </main>
 <footer>
-	<p class="center grey-text">
-		&copy; Sprites and content are owned by the Pokémon Company, Game
-		Freak and Nintendo
-	</p>
+	<div class="wrapper">
+		<p class="center grey-text">
+			&copy; Sprites and content are owned by the Pokémon Company, Game
+			Freak and Nintendo
+		</p>
+	</div>
 </footer>

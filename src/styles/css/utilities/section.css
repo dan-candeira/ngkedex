@@ -1,0 +1,9 @@
+.section {
+	padding-block-end: var(--space-l-2xl);
+	border-bottom: 4px solid var(--color-dark);
+}
+
+.section > .link {
+	display: flex;
+	justify-content: end;
+}

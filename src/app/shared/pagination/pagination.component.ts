@@ -20,9 +20,9 @@ export class PaginationComponent implements OnInit, OnChanges {
 	@Output() pageChange: EventEmitter<number> =
 		new EventEmitter<number>();
 
-	pages: Observable<number[]>;
-	currentPage: number;
-	totalPages: number;
+	pages!: Observable<number[]>;
+	currentPage!: number;
+	totalPages!: number;
 
 	ngOnInit() {
 		this.getPages(this.offset, this.limit, this.size);

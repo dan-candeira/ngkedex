@@ -1,16 +1,16 @@
-<section>
-	<app-loader [loading]="loading" [failed]="failed"></app-loader>
-	<div class="card__list">
-		<ng-container *ngIf="!loading && !failed">
+
+<ng-container *ngIf="pokemons$ | async as pokemons">
+	<section>
+		<div class="grid" data-layout="50-50">
 			<ng-container *ngFor="let pokemon of pokemons">
 				<app-pokemon-entry [pokemon]="pokemon"></app-pokemon-entry>
 			</ng-container>
-		</ng-container>
-	</div>
-</section>
-<app-pagination
-	[offset]="offset"
-	[limit]="limit"
-	[size]="count"
-	(pageChange)="onPageChange($event)"
-></app-pagination>
+		</div>
+	</section>
+	<app-pagination
+		[offset]="offset"
+		[limit]="limit"
+		[size]="count"
+		(pageChange)="onPageChange($event)"
+	></app-pagination>
+</ng-container>

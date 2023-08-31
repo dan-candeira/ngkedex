@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as _ from 'lodash';
+import {padStart} from 'lodash';
 
 @Pipe({
 	name: 'feet',
@@ -20,7 +20,7 @@ export class FeetPipe implements PipeTransform {
 			inches = Math.round(
 				(feet - roundedFeet) * this._inchesPerFeet,
 			);
-		return `${roundedFeet}' ${_.padStart(inches.toString(), 2, '0')}"`;
+		return `${roundedFeet}' ${padStart(inches.toString(), 2, '0')}"`;
 	}
 
 	getMeters(value: number, type: string = 'cm'): number {

@@ -1,36 +1,24 @@
-<ng-container *ngIf="(pokemon$ | async) as pokemon">
-		<div class="center" *ngIf="loading$ | async as loading; else content">
-			<app-loader
-				[loading]="loading"
-				[failed]="failed$ | async"
-			></app-loader>
+<div *ngIf="pokemon$ | async as pokemon">
+	<div class="row">
+		<div class="col s12 m6">
+			<app-pokemon-entry
+				[pokemon]="pokemon?.baseInfo"
+				[withLink]="false"
+				[imageWidth]="488"
+				[imageHeight]="488"
+			></app-pokemon-entry>
 		</div>
-		<ng-template #content>
-		<div>
-			<div class="row">
-				<div class="col s12 m6">
-					<app-pokemon-entry
-						[pokemon]="pokemon?.baseInfo"
-						[withLink]="false"
-						[imageWidth]="488"
-						[imageHeight]="488"
-					></app-pokemon-entry>
-				</div>
-				<div class="col s12 m6">
-					<app-pokemon-ability-info
-						[info]="pokemon?.abilityInfo"
-					></app-pokemon-ability-info>
-					<app-pokemon-description
-						[descriptions]="pokemon?.descriptions"
-					></app-pokemon-description>
-					<app-pokemon-types
-						[types]="pokemon?.types"
-					></app-pokemon-types>
-				</div>
-			</div>
-			<app-pokemon-stats
-				[stats]="pokemon?.stats"
-			></app-pokemon-stats>
+		<div class="col s12 m6">
+			<app-pokemon-ability-info
+				[info]="pokemon?.abilityInfo"
+			></app-pokemon-ability-info>
+			<app-pokemon-description
+				[descriptions]="pokemon?.descriptions"
+			></app-pokemon-description>
+			<app-pokemon-types
+				[types]="pokemon?.types"
+			></app-pokemon-types>
 		</div>
-		</ng-template>
-</ng-container>
+	</div>
+	<app-pokemon-stats [stats]="pokemon?.stats"></app-pokemon-stats>
+</div>

@@ -1,0 +1,48 @@
+.animation-control {
+	all: unset;
+	position: relative;
+	height: 3rem;
+	width: 12rem;
+	cursor: pointer;
+	margin-block: var(--space-s);
+	visibility: hidden;
+	opacity: 0;
+}
+
+.animation-control[data-visible="true"] {
+	visibility: visible;
+	opacity: 1;
+}
+
+.animation-control:hover,
+.animation-control:focus {
+	outline: 3px solid currentColor;
+}
+
+.animation-control:focus {
+	outline: 3px solid currentColor;
+}
+
+.animation-control svg {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+}
+
+.animation-control[aria-pressed="false"] #play {
+	visibility: visible;
+}
+
+.animation-control[aria-pressed="false"] #pause {
+	visibility: hidden;
+}
+
+.animation-control[aria-pressed="true"] #play {
+	visibility: hidden;
+}
+
+.animation-control[aria-pressed="true"] #pause {
+	visibility: visible;
+}

@@ -5,6 +5,6 @@ import { Component, Input } from '@angular/core';
 	templateUrl: './loader.component.html',
 })
 export class LoaderComponent {
-	@Input() loading: boolean = false;
+	@Input() loading: boolean | null = false;
 	@Input() failed: boolean | null = false;
 }

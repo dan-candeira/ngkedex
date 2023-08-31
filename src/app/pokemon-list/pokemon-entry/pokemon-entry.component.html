@@ -1,4 +1,4 @@
-<article class="card__item">
+<article class="card">
 	<div class="card__image">
 		<img
 			[src]="pokemon?.sprite"
@@ -8,10 +8,10 @@
 			alt=""
 		/>
 	</div>
-	<h2 class="card__title">{{ pokemon?.name }}</h2>
-	<div class="card__action" *ngIf="withLink">
-		<a [routerLink]="['/pokemon', pokemon?.id]"
-			>View stats
+	<div class="flow flow-space-m">
+		<h2 class="card__title">{{ pokemon?.name }}</h2>
+		<a class="button" data-variant="dark" [routerLink]="['/pokemon', pokemon?.id]" *ngIf="withLink">
+			View stats
 			<span class="visually-hidden"> about {{ pokemon?.name }}</span>
 		</a>
 	</div>

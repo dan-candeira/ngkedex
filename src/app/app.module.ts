@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,8 @@ import { LoaderComponent } from './shared/loader/loader.component';
 
 import { FeetPipe } from './shared/metrics/feet.pipe';
 import { PoundPipe } from './shared/metrics/pound.pipe';
+import { RequestInterceptor } from '@shared/interceptors/request-interceptor.interceptor';
+import { RequestState } from '@shared/services/request-state.service';
 
 @NgModule({
 	declarations: [
@@ -46,7 +48,14 @@ import { PoundPipe } from './shared/metrics/pound.pipe';
 		AppRoutingModule,
 		BrowserAnimationsModule,
 	],
-	providers: [],
+	providers: [
+		RequestState,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: RequestInterceptor,
+			multi: true
+		}
+	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

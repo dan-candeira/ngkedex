@@ -1,0 +1,15 @@
+.cover-image {
+	margin-block-start: var(--space-l-2xl);
+}
+
+.cover-image img {
+	object-fit: cover;
+	object-position: center;
+	max-width: 100%;
+	height: auto;
+	max-height: 25ch;
+}
+
+.cover-image + .region {
+	--region-space-top: var(--space-m);
+}

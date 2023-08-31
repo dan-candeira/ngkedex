@@ -3,12 +3,13 @@
 	"version": "0.0.0",
 	"scripts": {
 		"ng": "ng",
-		"start": "ng serve",
+		"start": "npx concurrently \"ng serve\" \"npm run css -- --watch\"",
 		"build": "ng build",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
 		"lint": "ng lint",
-		"format": "npx prettier . --write"
+		"format": "npx prettier . --write",
+		"css": "npx postcss src/styles/css/global.css -o src/styles/global.css"
 	},
 	"private": true,
 	"dependencies": {
@@ -24,7 +25,7 @@
 		"lodash": "^4.17.21",
 		"materialize-css": "^1.0.0",
 		"rxjs": "~7.5.0",
-		"tslib": "^2.3.0",
+		"tslib": "^2.6.2",
 		"zone.js": "~0.11.4"
 	},
 	"devDependencies": {
@@ -35,6 +36,8 @@
 		"@types/node": "^12.11.1",
 		"@typescript-eslint/eslint-plugin": "5.11.0",
 		"@typescript-eslint/parser": "5.11.0",
+		"concurrently": "^8.2.1",
+		"cssnano": "^6.0.1",
 		"eslint": "^8.2.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-prettier": "^4.0.0",
@@ -44,7 +47,14 @@
 		"karma-coverage": "~2.1.0",
 		"karma-jasmine": "~4.0.0",
 		"karma-jasmine-html-reporter": "~1.7.0",
+		"postcss": "^8.4.29",
+		"postcss-cli": "^10.1.0",
+		"postcss-import": "^15.1.0",
+		"postcss-import-ext-glob": "^2.1.1",
+		"postcss-js": "^4.0.1",
 		"prettier": "^3.0.2",
+		"slugify": "^1.6.6",
+		"tailwindcss": "^3.3.3",
 		"tslint-to-eslint-config": "2.4.0",
 		"typescript": "~4.8.4"
 	}

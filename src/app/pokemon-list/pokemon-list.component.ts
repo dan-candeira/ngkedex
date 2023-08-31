@@ -2,26 +2,37 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PokemonService } from '@shared/services/pokemon.service';
 import { PokemonEntry } from '@shared/models/pokemon-entry';
 import { Router, ActivatedRoute } from '@angular/router';
-import { map, share } from 'rxjs/operators';
+import { map, share, switchMap, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { PokemonList } from '@shared/models/pokemon-list';
 
 @Component({
 	providers: [PokemonService],
 	selector: 'app-pokemon-list',
 	templateUrl: './pokemon-list.component.html',
 	styles: [
-		/*css*/ `
-			@use 'pokemon-list';
+		`
+			/* @use 'pokemon-list'; */
 		`,
 	],
 	encapsulation: ViewEncapsulation.None,
 })
 export class PokemonListComponent implements OnInit {
-	pokemons?: PokemonEntry[];
+	pokemons$: Observable<PokemonEntry[]> = this._route.params.pipe(
+		map((params) => params['nr']),
+		map((pageNr: any) => (pageNr - 1) * this.limit),
+		switchMap((offset: any) => {
+			this.offset = offset;
+			return this._service.findAll(offset, this.limit);
+		}),
+		tap(({ count }) => {
+			this.count = count;
+		}),
+		map(({ pokemons }) => pokemons),
+	);
 	count: number = 0;
 	offset: number = 0;
 	limit: number = 20;
-	loading: boolean = false;
-	failed: boolean = false;
 
 	constructor(
 		private _service: PokemonService,
@@ -30,32 +41,15 @@ export class PokemonListComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		let observable = this._route.params.pipe(
-			map((params) => params['nr']),
-			map((pageNr) => (pageNr - 1) * this.limit),
-		);
-		observable.subscribe((offset) => (this.offset = offset));
-		observable
-			.pipe(share())
-			.subscribe((offset) => this.findAll(offset, this.limit));
+		// observable
+		// 	.pipe(share())
+		// 	.subscribe((offset) => this.findAll(offset, this.limit));
 	}
 
-	findAll(offset: number, limit: number): void {
-		this.pokemons = [];
-		this.loading = true;
-		this.failed = false;
-		this._service.findAll(offset, limit).subscribe({
-			next: (result) => {
-				this.pokemons = result.pokemons;
-				this.count = result.count;
-				this.loading = false;
-			},
-			error: () => {
-				this.loading = false;
-				this.failed = true;
-			},
-		});
-	}
+	// findAll(offset: number, limit: number): void {
+	// 	this.pokemons = [];
+	// 	;
+	// }
 
 	onPageChange(offset: number): void {
 		this.offset = offset;
