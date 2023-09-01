@@ -24,6 +24,8 @@ import { FeetPipe } from './shared/metrics/feet.pipe';
 import { PoundPipe } from './shared/metrics/pound.pipe';
 import { RequestInterceptor } from '@shared/interceptors/request-interceptor.interceptor';
 import { RequestState } from '@shared/services/request-state.service';
+import { UniquePipe } from './shared/pipes/unique.pipe';
+import { SafeStringPipe } from './shared/pipes/safe-string.pipe';
 
 @NgModule({
 	declarations: [
@@ -40,6 +42,8 @@ import { RequestState } from '@shared/services/request-state.service';
 		PokemonTypesComponent,
 		PokemonStatsComponent,
 		LoaderComponent,
+		UniquePipe,
+  SafeStringPipe,
 	],
 	imports: [
 		BrowserModule,
@@ -53,8 +57,8 @@ import { RequestState } from '@shared/services/request-state.service';
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: RequestInterceptor,
-			multi: true
-		}
+			multi: true,
+		},
 	],
 	bootstrap: [AppComponent],
 })

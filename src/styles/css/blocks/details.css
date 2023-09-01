@@ -1,0 +1,7 @@
+.details summary > * {
+	display: inline-block;
+}
+
+.details p {
+	margin-top: 1.5rem;
+}

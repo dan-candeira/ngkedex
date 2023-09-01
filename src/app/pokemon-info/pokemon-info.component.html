@@ -1,24 +1,16 @@
 <div *ngIf="pokemon$ | async as pokemon">
-	<div class="row">
-		<div class="col s12 m6">
-			<app-pokemon-entry
-				[pokemon]="pokemon?.baseInfo"
-				[withLink]="false"
-				[imageWidth]="488"
-				[imageHeight]="488"
-			></app-pokemon-entry>
-		</div>
-		<div class="col s12 m6">
-			<app-pokemon-ability-info
-				[info]="pokemon?.abilityInfo"
-			></app-pokemon-ability-info>
-			<app-pokemon-description
-				[descriptions]="pokemon?.descriptions"
-			></app-pokemon-description>
-			<app-pokemon-types
-				[types]="pokemon?.types"
-			></app-pokemon-types>
-		</div>
-	</div>
+	<app-pokemon-entry
+		[pokemon]="pokemon?.baseInfo"
+		[withLink]="false"
+		[imageWidth]="488"
+		[imageHeight]="488"
+	></app-pokemon-entry>
+	<app-pokemon-ability-info
+		[info]="pokemon?.abilityInfo"
+	></app-pokemon-ability-info>
 	<app-pokemon-stats [stats]="pokemon?.stats"></app-pokemon-stats>
+	<app-pokemon-types [types]="pokemon?.types"></app-pokemon-types>
+	<app-pokemon-description
+		[descriptions]="pokemon?.descriptions"
+	></app-pokemon-description>
 </div>

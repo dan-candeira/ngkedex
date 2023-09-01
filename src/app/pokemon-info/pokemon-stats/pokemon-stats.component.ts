@@ -8,10 +8,10 @@ import { PokemonStats } from '@shared/models/pokemon-stats';
 export class PokemonStatsComponent {
 	@Input() stats?: PokemonStats;
 
-	getStatPercent(value?: number): string {
+	getStatPercent(value?: number): number {
 		if (value == null) {
-			return '0%';
+			return 0;
 		}
-		return (value / 255) * 100 + '%';
+		return (value / 255) * 100;
 	}
 }

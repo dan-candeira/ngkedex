@@ -1,0 +1,6 @@
+.pill {
+	padding: 0.33rem 1.3rem;
+	border-radius: 3rem;
+	background-color: var(--color-primary);
+	color: var(--color-light-glare);
+}

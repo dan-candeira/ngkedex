@@ -1,0 +1,9 @@
+.progress {
+	border: 3px solid var(--color-dark);
+	height: 1rem;
+}
+
+.progress .determinate {
+	background-color: var(--color-dark);
+	height: 100%;
+}

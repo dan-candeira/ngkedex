@@ -1,63 +1,100 @@
-<div class="card">
-	<div class="card-content">
-		<span class="card-title">Stats</span>
-		<div class="row">
-			<div class="col s12 m6">
+<div class="card flow">
+	<h2>Stats</h2>
+		<dl class="flow">
+		<div>
+			<dt>
 				HP
+			</dt>
+			<dd>
+				<span class="vh">{{stats?.hp || 0}}</span>
 				<div class="progress">
 					<div
 						class="determinate"
-						[style.width]="getStatPercent(stats?.hp)"
+						[style.width.%]="getStatPercent(stats?.hp)"
 						[title]="stats?.hp"
 					></div>
 				</div>
+			</dd>
+		</div>
+		<div>
+			<dt>
 				Attack
+			</dt>
+			<dd>
+				<span class="vh">{{stats?.attack || 0 }}</span>
 				<div class="progress">
 					<div
 						class="determinate"
-						[style.width]="getStatPercent(stats?.attack)"
+						[style.width.%]="getStatPercent(stats?.attack)"
 						[title]="stats?.attack"
 					></div>
 				</div>
+			</dd>
+		</div>
+		<div>
+			<dt>
 				Defense
+			</dt>
+			<dd>
+				<span class="vh">{{stats?.defense || 0}}</span>
 				<div class="progress">
 					<div
 						class="determinate"
-						[style.width]="getStatPercent(stats?.defense)"
+						[style.width.%]="getStatPercent(stats?.defense)"
 						[title]="stats?.defense"
 					></div>
 				</div>
-			</div>
-			<div class="col s12 m6">
+			</dd>
+		</div>
+		<div>
+			<dt>
 				Special Attack
+			</dt>
+			<dd>
+				<span class="vh">
+					{{ stats?.specialAttack || 0 }}
+				</span>
 				<div class="progress">
 					<div
 						class="determinate"
-						[style.width]="
-							getStatPercent(stats?.specialAttack)
-						"
+						[style.width.%]="getStatPercent(stats?.specialAttack)"
 						[title]="stats?.specialAttack"
 					></div>
 				</div>
+			</dd>
+		</div>
+		<div>
+			<dt>
 				Special Defense
+			</dt>
+			<dd>
+				<span class="vh">{{ stats?.specialDefense || 0 }}</span>
 				<div class="progress">
 					<div
 						class="determinate"
-						[style.width]="
-							getStatPercent(stats?.specialDefense)
-						"
+						[style.width.%]="getStatPercent(stats?.specialDefense)"
 						[title]="stats?.specialDefense"
 					></div>
 				</div>
+			</dd>
+		</div>
+
+		<div>
+			<dt>
 				Speed
+			</dt>
+			<dd>
+				<span class="vh">
+					{{ stats?.speed || 0 }}
+				</span>
 				<div class="progress">
 					<div
 						class="determinate"
-						[style.width]="getStatPercent(stats?.speed)"
+						[style.width.%]="getStatPercent(stats?.speed)"
 						[title]="stats?.speed"
 					></div>
 				</div>
-			</div>
+			</dd>
 		</div>
-	</div>
+	</dl>
 </div>

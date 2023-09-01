@@ -1,31 +1,27 @@
-<div class="card-panel blue-grey lighten-1">
-	<div class="row">
-		<div class="col s6">
-			<dl>
-				<dt class="white-text">Height</dt>
-				<dd class="black-text">{{ info?.height | feet: 'dm' }}</dd>
-			</dl>
-			<dl>
-				<dt class="white-text">Weight</dt>
-				<dd class="black-text">
-					{{ info?.weight | pound: 'hg' : 1 }}
-				</dd>
-			</dl>
-		</div>
-		<div class="col s6">
-			<dl>
-				<dt class="white-text">Category</dt>
-				<dd class="black-text">{{ info?.category }}</dd>
-			</dl>
-			<dl>
-				<dt class="white-text">Abilities</dt>
-				<dd
-					class="black-text capitalize"
-					*ngFor="let ability of info?.abilities"
-				>
-					{{ ability?.name }}
-				</dd>
-			</dl>
-		</div>
+<div class="card">
+	<div class="repel">
+		<dl>
+			<dt>Height</dt>
+			<dd>{{ info?.height | feet: 'dm' }}</dd>
+		</dl>
+		<dl>
+			<dt>Weight</dt>
+			<dd>
+				{{ info?.weight | pound: 'hg' : 1 }}
+			</dd>
+		</dl>
+		<dl>
+			<dt>Category</dt>
+			<dd>{{ info?.category }}</dd>
+		</dl>
+		<dl>
+			<dt>Abilities</dt>
+			<dd
+				class="black-text capitalize"
+				*ngFor="let ability of info?.abilities"
+			>
+				{{ ability?.name }}
+			</dd>
+		</dl>
 	</div>
 </div>

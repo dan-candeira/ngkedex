@@ -9,7 +9,8 @@
 		"test": "ng test",
 		"lint": "ng lint",
 		"format": "npx prettier . --write",
-		"css": "npx postcss src/styles/css/global.css -o src/styles/global.css"
+		"css": "npx postcss src/styles/css/global.css -o src/styles/global.css",
+		"prebuild": "npm run css"
 	},
 	"private": true,
 	"dependencies": {

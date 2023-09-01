@@ -1,11 +1,8 @@
-<div class="card">
-	<div class="card-content">
-		<h3 class="card-title">Types</h3>
-		<span
-			*ngFor="let type of types"
-			class="type capitalize"
-			[ngClass]="getColor(type)"
-			>{{ type.type }}</span
-		>
+<div class="card flow">
+	<h3 class="card-title">Types</h3>
+	<div class="cluster">
+		<span *ngFor="let type of types" class="pill capitalize">
+			{{ type.type }}
+		</span>
 	</div>
 </div>
