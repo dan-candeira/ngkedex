@@ -1,17 +1,19 @@
 
 <ng-container *ngIf="data$ | async as data">
-	<section *ngIf="!data.loading">
-		<div class="grid" data-layout="50-50">
-			<ng-container *ngFor="let pokemon of data.pokemons">
-				<app-pokemon-entry [pokemon]="pokemon"></app-pokemon-entry>
-			</ng-container>
-		</div>
-	</section>
+	<ng-container *ngIf="!data.loading">
+		<section >
+			<div class="grid" data-layout="50-50">
+				<ng-container *ngFor="let pokemon of data.pokemons">
+					<app-pokemon-entry [pokemon]="pokemon"></app-pokemon-entry>
+				</ng-container>
+			</div>
+		</section>
 
-	<app-pagination
-		[offset]="offset"
-		[limit]="limit"
-		[size]="count"
-		(pageChange)="onPageChange($event)"
-	></app-pagination>
+		<app-pagination
+			[offset]="offset"
+			[limit]="limit"
+			[size]="count"
+			(pageChange)="onPageChange($event)"
+		></app-pagination>
+	</ng-container>
 </ng-container>
