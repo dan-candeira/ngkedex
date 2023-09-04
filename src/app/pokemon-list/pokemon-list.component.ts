@@ -3,18 +3,15 @@ import { PokemonService } from '@shared/services/pokemon.service';
 import { PokemonEntry } from '@shared/models/pokemon-entry';
 import { Router, ActivatedRoute } from '@angular/router';
 import { map, share, switchMap, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { PokemonList } from '@shared/models/pokemon-list';
+import { RequestState } from '@shared/services/request-state.service';
 
 @Component({
 	providers: [PokemonService],
 	selector: 'app-pokemon-list',
 	templateUrl: './pokemon-list.component.html',
-	styles: [
-		`
-			/* @use 'pokemon-list'; */
-		`,
-	],
+	styles: [],
 	encapsulation: ViewEncapsulation.None,
 })
 export class PokemonListComponent implements OnInit {
@@ -33,11 +30,16 @@ export class PokemonListComponent implements OnInit {
 	count: number = 0;
 	offset: number = 0;
 	limit: number = 20;
+	data$ = combineLatest([
+		this.pokemons$,
+		this._loadingState.loading$,
+	]).pipe(map(([pokemons, loading]) => ({ pokemons, loading })));
 
 	constructor(
 		private _service: PokemonService,
 		private _router: Router,
 		private _route: ActivatedRoute,
+		private _loadingState: RequestState,
 	) {}
 
 	ngOnInit(): void {

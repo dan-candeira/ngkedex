@@ -20,7 +20,7 @@ export class RequestInterceptor implements HttpInterceptor {
 		this.requestState.loading$.next(true);
 
 		return next.handle(request).pipe(
-			delay(500),
+			delay(300),
 			map<HttpEvent<any>, any>((event: HttpEvent<any>) => {
 				if (event instanceof HttpResponse) {
 					this.requestState.loading$.next(false);
