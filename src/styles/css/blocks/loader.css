@@ -1,0 +1,11 @@
+.loader {
+	padding-block: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.loader svg {
+	height: 20ch;
+}

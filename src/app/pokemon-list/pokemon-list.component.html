@@ -1,7 +1,7 @@
 
 <ng-container *ngIf="data$ | async as data">
 	<ng-container *ngIf="!data.loading">
-		<section >
+		<section>
 			<div class="grid" data-layout="50-50">
 				<ng-container *ngFor="let pokemon of data.pokemons">
 					<app-pokemon-entry [pokemon]="pokemon"></app-pokemon-entry>
